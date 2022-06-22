@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    
-    private Rigidbody2D meuRB;                          //Pegando meu RighdBody
-    [SerializeField] private float velH = 3;            //Velocidade
+    [SerializeField] private float velH = 3;                //Velocidade
+    [SerializeField] private float velV = 5;                //Força do pulo
+    [SerializeField] private int qtdPulo = 1;
+
+    private Rigidbody2D meuRB;                              //Pegando meu RighdBody
     private Animator meuAnim;
+
+    //Elementos do Raycast
+    private BoxCollider2D boxCol;
+    [SerializeField] private LayerMask layerLevel;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +23,9 @@ public class PlayerController : MonoBehaviour
 
         //pegando meu animator
         meuAnim = GetComponent<Animator>();
+
+        //pegando o meu boxcollider
+        boxCol = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -24,10 +33,23 @@ public class PlayerController : MonoBehaviour
     {
         //Fazendo o player andar para os lados
         Movendo();
+
+        Pulando();
+    }
+    private void FixedUpdate()
+    {
+        meuAnim.SetBool("noChao", IsGrounded());
+
+        //Se eu toquei no chão eu reseto os pulos
+        if (IsGrounded())
+        {
+            qtdPulo = 1;
+        }
     }
 
     private void Movendo()
     {
+
         //ao apertar a tecla de movimento horizontal fo Input Maneger, ele se movera
         var movi = Input.GetAxis("Horizontal") * velH;
 
@@ -35,7 +57,7 @@ public class PlayerController : MonoBehaviour
         meuRB.velocity = new Vector2(movi, meuRB.velocity.y);
 
         //Alterando animação de parado para movendo
-        if(movi != 0)
+        if (movi != 0)
         {
             //Alterando a imagem para que ele olhe para o lado em que está indo
             meuRB.transform.localScale = new Vector3(Mathf.Sign(movi), meuRB.transform.localScale.y, meuRB.transform.localScale.z);
@@ -43,5 +65,71 @@ public class PlayerController : MonoBehaviour
 
         //Alterando o meu movimento com base em uma condição dentro da função, true ou false
         meuAnim.SetBool("movendo", movi != 0);
+        
+    }
+
+    private void Pulando()
+    {
+        //aplicando o pulo o pulo
+        var jump = Input.GetButtonDown("Jump");
+
+        //Definindo o parametro so velV com base na minha velocidade Y do meuRB
+        meuAnim.SetFloat("Velv", meuRB.velocity.y);
+
+        if (jump && qtdPulo > 0)
+        {
+            qtdPulo --;
+
+            //Subindo o player
+            meuRB.velocity = new Vector2(meuRB.velocity.x, velV);
+
+            //modificando a sprite
+            //meuAnim.SetBool("noChao", false);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //Aumentando a quantidade de pulo ao tocar no chão
+        /*
+        if (collision.gameObject.CompareTag("Parede"))
+        {
+            qtdPulo = 1;
+
+            meuAnim.SetBool("noChao", true);
+        }
+        */
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        /*
+        if (collision.gameObject.CompareTag("Parede"))
+        {
+            meuAnim.SetBool("noChao", false);
+        }
+        */
+    }
+
+    //Raycast de colisão no chão
+    private bool IsGrounded()
+    {
+        //Criando o meu Raycast         //Pegando os limites do meu colisor
+        bool chao = Physics2D.Raycast(boxCol.bounds.center, Vector2.down, .6f, layerLevel);
+
+        Color cor;
+        //Definindo uma cor
+        if (chao)
+        {
+            //Estou colidindo no chão
+            cor = Color.red;
+        } else
+        {
+            cor = Color.green;
+        }
+
+        //Debug linha
+        Debug.DrawRay(boxCol.bounds.center, Vector2.down * .6f, cor);
+
+        return chao;
     }
 }
