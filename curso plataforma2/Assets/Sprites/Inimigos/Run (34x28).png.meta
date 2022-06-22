@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 742eb015a853f3b4db4bb5d857fb13e0
+guid: b2b2436251bf39445861636a8835ea21
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ground (78x58)_0
+      name: Run (34x28)_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 13
-        width: 37
-        height: 25
+        x: 10
+        y: 3
+        width: 19
+        height: 15
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,8 +130,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67e3465438bead948bf606f7a68f4e9a
-      internalID: -1080892153
+      spriteID: a8564c44aa0b65642b9b54cefcaf0bd5
+      internalID: -1812153027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run (34x28)_1
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 1
+        width: 19
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01617ce7e3013664aadc089eadc189ca
+      internalID: -1603956394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run (34x28)_2
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 0
+        width: 18
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a884f81bd9006aa40a5037a9c9672c64
+      internalID: 20587147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run (34x28)_3
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 2
+        width: 18
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2051697189275054aa39d14b4917ec7f
+      internalID: -1714901020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run (34x28)_4
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 1
+        width: 18
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bc80ff9f90420a46b81b398548b696a
+      internalID: -291247760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run (34x28)_5
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 0
+        width: 18
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: daf473190bd6e424b8830101396863f3
+      internalID: 858425157
       vertices: []
       indices: 
       edges: []
@@ -147,7 +252,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Ground (78x58)_0: -1080892153
+      Run (34x28)_3: -1714901020
+      Run (34x28)_4: -291247760
+      Run (34x28)_0: -1812153027
+      Run (34x28)_5: 858425157
+      Run (34x28)_1: -1603956394
+      Run (34x28)_2: 20587147
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
