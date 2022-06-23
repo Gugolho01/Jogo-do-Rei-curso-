@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Debug linha
-        Debug.DrawRay(boxCol.bounds.center, Vector2.down * .6f, cor);
+        //Debug.DrawRay(boxCol.bounds.center, Vector2.down * .6f, cor);
 
         return chao;
     }
