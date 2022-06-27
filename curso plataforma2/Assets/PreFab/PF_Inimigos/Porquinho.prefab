@@ -170,5 +170,7 @@ MonoBehaviour:
   layerLevel:
     serializedVersion: 2
     m_Bits: 256
-  velH: 3
+  velH: 2
   timerVirando: 2
+  timerParado: 1
+  parado: 0
