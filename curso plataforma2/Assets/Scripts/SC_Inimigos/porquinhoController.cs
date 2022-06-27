@@ -10,7 +10,8 @@ public class porquinhoController : MonoBehaviour
     [SerializeField] private float velH = 2f;
     private float velHMax = 2f;
     [SerializeField] private float timerVirando = 2;
-    [SerializeField] private float timerParado = 0;
+    [SerializeField] private float timerParado = 1;
+    [SerializeField] private bool parado = false;
 
     // Start is called before the first frame update
     void Start()
@@ -80,42 +81,58 @@ public class porquinhoController : MonoBehaviour
 
     private void Virando()
     {
-        if (timerVirando >= 0) timerVirando -= Time.deltaTime;
-
-        //Verificando se há colisão na Direita ou na esquerda com o IsGround, e se eu não estou prestes a cair
-        //Olhando a Direita e a esquerda e vendo se vou cair
-        //Direita
-        if (velH > 0)
+        if (!parado)
         {
-            if (IsGround(0) || !IsGround(4))
-            {
-                
-                timerVirando = 0;
-                meuRB.velocity = new Vector2(velH, meuRB.velocity.y);
-            }
-        }
-        // Esquerda
-        if (velH < 0)
-        {
-            if (IsGround(2) || !IsGround(5))
-            {
-               
-                timerVirando = 0;
-                meuRB.velocity = new Vector2(velH, meuRB.velocity.y);
-            }
-        }
-
-        //Virando o personagem
-        if (timerVirando <= 0)
-        {
-            //invertendo a velH
-            velH *= -1;
-
+            velH = velHMax;
             meuRB.velocity = new Vector2(velH, meuRB.velocity.y);
-            //invertendo a imagem
-            meuRB.transform.localScale = new Vector3(Mathf.Sign(meuRB.velocity.x) * -1, 1f, 1f);
 
-            timerVirando = Random.Range(2f, 6f);
+            if (timerVirando >= 0) timerVirando -= Time.deltaTime;
+
+            //Verificando se há colisão na Direita ou na esquerda com o IsGround, e se eu não estou prestes a cair
+            //Olhando a Direita e a esquerda e vendo se vou cair
+            //Direita
+            if (velH > 0)
+            {
+                if (IsGround(0) || !IsGround(4))
+                {
+                    timerVirando = 0;
+                    parado = true;
+                }
+            }
+            // Esquerda
+            if (velH < 0)
+            {
+                if (IsGround(2) || !IsGround(5))
+                {
+                    timerVirando = 0;
+                    parado = true;
+                }
+            }
+
+            //Virando o personagem
+            if (timerVirando <= 0)
+            {
+                //invertendo a velH
+                velH *= -1;
+                velHMax = velH;
+
+                
+                //invertendo a imagem
+                meuRB.transform.localScale = new Vector3(Mathf.Sign(velH) * -1, 1f, 1f);
+
+                timerVirando = Random.Range(2f, 6f);
+            }
+        }
+        else {
+            velH = 0;
+            meuRB.velocity = new Vector2(velH, meuRB.velocity.y);
+
+            if(timerParado >= 0) { timerParado -= Time.deltaTime; }
+            else 
+            {
+                timerParado = 1f;
+                parado = false; 
+            }
         }
     }
 }
