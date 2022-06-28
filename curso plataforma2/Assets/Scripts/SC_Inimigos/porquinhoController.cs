@@ -6,6 +6,7 @@ public class porquinhoController : MonoBehaviour
 {
     private Rigidbody2D meuRB;
     private BoxCollider2D boxCol;
+    private Animator meuAnim;
     [SerializeField] private LayerMask layerLevel;  //pegando a layer do level
     [SerializeField] private float velH = 2f;
     private float velHMax = 2f;
@@ -22,6 +23,8 @@ public class porquinhoController : MonoBehaviour
         //pegando meu boxCollider
         boxCol = GetComponent<BoxCollider2D>();
 
+        meuAnim = GetComponent<Animator>();
+
         //Aplicando velocidade e movendo ele
         meuRB.velocity = new Vector2(velH, meuRB.velocity.y);
         meuRB.transform.localScale = new Vector3(Mathf.Sign(meuRB.velocity.x) * -1, 1f, 1f);
@@ -30,14 +33,9 @@ public class porquinhoController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(velHMax);
-        Debug.Log(velH);
-
         //aqui contem um timer para fazer o porquinho virar a direção
         Virando();
 
-        //Checando se estou me movendo e mudando a animação
-        meuAnim.SetBool("parado", parado);
     }
 
     //IsGrounded verifica se ele está tocando em algo em alguma direção
@@ -89,12 +87,9 @@ public class porquinhoController : MonoBehaviour
     {
         if (!parado)
         {
-<<<<<<< HEAD
             //Checando se estou me movendo e mudando a animação
-            
+            meuAnim.SetBool("parado", false);
 
-=======
->>>>>>> parent of abaafd5 (terminei a animaÃ§Ã£o do porquinho)
             velH = velHMax;
             meuRB.velocity = new Vector2(velH, meuRB.velocity.y);
 
@@ -108,7 +103,7 @@ public class porquinhoController : MonoBehaviour
                 if (IsGround(0) || !IsGround(4))
                 {
                     timerVirando = 0;
-                    parado = true;
+                    //parado = true;
                 }
             }
             // Esquerda
@@ -117,7 +112,7 @@ public class porquinhoController : MonoBehaviour
                 if (IsGround(2) || !IsGround(5))
                 {
                     timerVirando = 0;
-                    parado = true;
+                    //parado = true;
                 }
             }
 
@@ -127,7 +122,7 @@ public class porquinhoController : MonoBehaviour
                 //invertendo a velH
                 velH *= -1;
 
-                if(velH > 0) { velHMax = velH; }
+                if(velH != 0) { velHMax = velH; }
                 
                 //invertendo a imagem
                 meuRB.transform.localScale = new Vector3(Mathf.Sign(velH) * -1, 1f, 1f);
@@ -136,23 +131,20 @@ public class porquinhoController : MonoBehaviour
             }
         }
         else {
-<<<<<<< HEAD
-=======
-            //Tirando a velocidade
->>>>>>> parent of abaafd5 (terminei a animaÃ§Ã£o do porquinho)
             velH = 0;
             meuRB.velocity = new Vector2(velH, meuRB.velocity.y);
 
-            if(timerParado >= 0) { timerParado -= Time.deltaTime; }
+            //Checando se estou me movendo e mudando a animação
+            meuAnim.SetBool("parado", true);
+
+            if(timerParado <= 0)timerParado -= Time.deltaTime;
             else 
             {
                 timerParado = 1f;
-                parado = false;
+                //parado = false;
             }
+            
+            
         }
-<<<<<<< HEAD
-
-=======
->>>>>>> parent of abaafd5 (terminei a animaÃ§Ã£o do porquinho)
     }
 }

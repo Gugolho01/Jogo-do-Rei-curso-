@@ -38,22 +38,8 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-<<<<<<< HEAD
-        /*
-        meuAnim.SetBool("noChao", IsGround());
-=======
-        meuAnim.SetBool("noChao", IsGrounded());
->>>>>>> parent of 627c8cd (Fechando o dia)
+        meuAnim.SetBool("noChao", IsGround(3));
 
-        //Se eu toquei no chão eu reseto os pulos
-        if (IsGrounded())
-        {
-            qtdPulo = 1;
-        }
-<<<<<<< HEAD
-        */
-=======
->>>>>>> parent of 627c8cd (Fechando o dia)
     }
 
     private void Movendo()
@@ -87,15 +73,13 @@ public class PlayerController : MonoBehaviour
 
         if (jump && qtdPulo > 0)
         {
-            qtdPulo --;
-
             //Subindo o player
             meuRB.velocity = new Vector2(meuRB.velocity.x, velV);
 
             //modificando a sprite
             //meuAnim.SetBool("noChao", false);
         }
-
+        
         //Se eu toquei no chão eu reseto os pulos
         if (IsGround(3) || IsGround(4) || IsGround(5))
         {
@@ -108,11 +92,12 @@ public class PlayerController : MonoBehaviour
             qtdPulo = 0;
         }
 
-        if (meuRB.velocity.y <= -6 || meuRB.velocity.y == 0)
+        if (meuRB.velocity.y == 0)
         {
             meuAnim.SetBool("noChao", true);
             qtdPulo = 1;
         }
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -127,70 +112,36 @@ public class PlayerController : MonoBehaviour
         }
         */
     }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        /*
-        if (collision.gameObject.CompareTag("Parede"))
-        {
-            meuAnim.SetBool("noChao", false);
-        }
-        */
-    }
 
-<<<<<<< HEAD
     //Raycast de colisão no chão
-    private bool IsGround(int dir = 0)
+    private bool IsGround(int dir = 3)
     {
         //Variaveis que preciso
         Vector2 direcao = new Vector2(1f, 0f);
         float linha = .4f;
 
         //com o dir vamos saber qual a direção que ele quer olhar do 0 aou 3, o 4 e 5 são para verificar se tem chão
-        switch (dir)
-=======
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        //Aumentando a quantidade de pulo ao tocar no chão
-        /*
-        if (collision.gameObject.CompareTag("Parede"))
->>>>>>> parent of 627c8cd (Fechando o dia)
-        {
-            qtdPulo = 1;
+        switch (dir) { 
+            case 3:
+                //Baixo
+                direcao = new Vector2(0f, -1f);
+                break;
 
-            meuAnim.SetBool("noChao", true);
-        }
-        */
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        /*
-        if (collision.gameObject.CompareTag("Parede"))
-        {
-            meuAnim.SetBool("noChao", false);
-        }
-        */
-    }
-
-    //Raycast de colisão no chão
-    private bool IsGrounded()
-    {
-        //Criando o meu Raycast         //Pegando os limites do meu colisor
-        bool chao = Physics2D.Raycast(boxCol.bounds.center, Vector2.down, .6f, layerLevel);
-
-        Color cor;
-        //Definindo uma cor
-        if (chao)
-        {
-            //Estou colidindo no chão
-            cor = Color.red;
-        } else
-        {
-            cor = Color.green;
+            //Aqui é verificandop se tem chão, para ele não cair
+            case 4:
+                //Direita baixo
+                direcao = new Vector2(1f, -1f);
+                break;
+            case 5:
+                //Esquerda Baixo
+                direcao = new Vector2(-1f, -1f);
+                break;
         }
 
-        //Debug linha
-        //Debug.DrawRay(boxCol.bounds.center, Vector2.down * .6f, cor);
+        bool chao = Physics2D.Raycast(boxCol.bounds.center, direcao, linha, layerLevel);
 
+        //Criando debug para ver as direções com linhas vermelhas
+        Debug.DrawRay(boxCol.bounds.center, direcao, Color.red);
         return chao;
     }
 }
