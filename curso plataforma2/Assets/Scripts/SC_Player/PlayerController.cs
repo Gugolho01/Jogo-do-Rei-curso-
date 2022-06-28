@@ -39,15 +39,20 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
 <<<<<<< HEAD
-        //meuAnim.SetBool("noChao", IsGround(3) );
+        /*
+        meuAnim.SetBool("noChao", IsGround());
 =======
         meuAnim.SetBool("noChao", IsGrounded());
+>>>>>>> parent of 627c8cd (Fechando o dia)
 
         //Se eu toquei no chão eu reseto os pulos
         if (IsGrounded())
         {
             qtdPulo = 1;
         }
+<<<<<<< HEAD
+        */
+=======
 >>>>>>> parent of 627c8cd (Fechando o dia)
     }
 
@@ -115,6 +120,40 @@ public class PlayerController : MonoBehaviour
         //Aumentando a quantidade de pulo ao tocar no chão
         /*
         if (collision.gameObject.CompareTag("Parede"))
+        {
+            qtdPulo = 1;
+
+            meuAnim.SetBool("noChao", true);
+        }
+        */
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        /*
+        if (collision.gameObject.CompareTag("Parede"))
+        {
+            meuAnim.SetBool("noChao", false);
+        }
+        */
+    }
+
+<<<<<<< HEAD
+    //Raycast de colisão no chão
+    private bool IsGround(int dir = 0)
+    {
+        //Variaveis que preciso
+        Vector2 direcao = new Vector2(1f, 0f);
+        float linha = .4f;
+
+        //com o dir vamos saber qual a direção que ele quer olhar do 0 aou 3, o 4 e 5 são para verificar se tem chão
+        switch (dir)
+=======
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //Aumentando a quantidade de pulo ao tocar no chão
+        /*
+        if (collision.gameObject.CompareTag("Parede"))
+>>>>>>> parent of 627c8cd (Fechando o dia)
         {
             qtdPulo = 1;
 
