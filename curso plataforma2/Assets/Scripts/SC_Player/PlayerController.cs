@@ -6,7 +6,10 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float velH = 3;                //Velocidade
     [SerializeField] private float velV = 5;                //Força do pulo
-    [SerializeField] private int qtdPulo = 1;
+    private int qtdPulo = 1;
+    [SerializeField] private int vida = 3;
+    [SerializeField] private float invencivel;
+    private float timerInven = 5f;
 
     private Rigidbody2D meuRB;                              //Pegando meu RighdBody
     private Animator meuAnim;
@@ -35,11 +38,37 @@ public class PlayerController : MonoBehaviour
         Movendo();
 
         Pulando();
+
+        if(invencivel >= 0) { invencivel -= Time.deltaTime; }
+        
     }
+    //Tá funcionando, é isso que importa
     private void FixedUpdate()
     {
         meuAnim.SetBool("noChao", IsGround(3));
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //Colisão com o inimigo
+        if (collision.gameObject.CompareTag("Inimigos"))
+        {
+            //Fazendo ele dar uma quicada aou pular em cima do inimigo
+            if(collision.transform.position.y < transform.position.y)
+            {
+                meuRB.velocity = new Vector2(meuRB.velocity.x, velV / 2);
+                meuAnim.SetFloat("Velv", meuRB.velocity.y);
+            //Fazendo ele perder vida ao colidir com o inimigo
+            } else
+            {
+                if(invencivel <= 0) 
+                {
+                    vida--;
+                    invencivel = timerInven;
+                }
+            }
+        }
     }
 
     private void Movendo()
@@ -100,18 +129,6 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        //Aumentando a quantidade de pulo ao tocar no chão
-        /*
-        if (collision.gameObject.CompareTag("Parede"))
-        {
-            qtdPulo = 1;
-
-            meuAnim.SetBool("noChao", true);
-        }
-        */
-    }
 
     //Raycast de colisão no chão
     private bool IsGround(int dir = 3)

@@ -16,10 +16,10 @@ TagManager:
   - Water
   - UI
   - Entidades
-  - Decoracao
+  - DEcoracao
   - Level
   - Background
-  - 
+  - ColisaoInimigos
   - 
   - 
   - 
@@ -48,11 +48,11 @@ TagManager:
   - name: Background
     uniqueID: 1512758019
     locked: 0
-  - name: Level
-    uniqueID: 4008211073
-    locked: 0
   - name: Decoracao
     uniqueID: 2692996113
+    locked: 0
+  - name: Level
+    uniqueID: 4008211073
     locked: 0
   - name: Inimigos
     uniqueID: 3915828291

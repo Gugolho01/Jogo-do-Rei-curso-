@@ -170,6 +170,8 @@ MonoBehaviour:
   velH: 5
   velV: 7
   qtdPulo: 1
+  vida: 3
+  invencivel: 1
   layerLevel:
     serializedVersion: 2
     m_Bits: 256

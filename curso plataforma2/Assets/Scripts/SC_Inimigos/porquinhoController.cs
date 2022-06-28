@@ -8,11 +8,11 @@ public class porquinhoController : MonoBehaviour
     private BoxCollider2D boxCol;
     private Animator meuAnim;
     [SerializeField] private LayerMask layerLevel;  //pegando a layer do level
-    [SerializeField] private float velH = 2f;
-    private float velHMax = 2f;
-    [SerializeField] private float timerVirando = 2;
-    [SerializeField] private float timerParado = 1;
-    [SerializeField] private bool parado = false;
+    private float velH = 2f;
+    [SerializeField] private float velHMax = 2f;
+    private float timerVirando = 2;
+    private float timerParado = 1;
+    private bool parado = false;
 
     // Start is called before the first frame update
     void Start()
