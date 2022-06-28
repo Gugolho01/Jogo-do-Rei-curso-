@@ -130,11 +130,11 @@ public class PlayerController : MonoBehaviour
             //Aqui é verificandop se tem chão, para ele não cair
             case 4:
                 //Direita baixo
-                direcao = new Vector2(1f, -1f);
+                direcao = new Vector2(1f, -1.6f);
                 break;
             case 5:
                 //Esquerda Baixo
-                direcao = new Vector2(-1f, -1f);
+                direcao = new Vector2(-1f, -1.6f);
                 break;
         }
 

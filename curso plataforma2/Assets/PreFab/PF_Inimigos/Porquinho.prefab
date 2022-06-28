@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3670290393450308273}
   - component: {fileID: 3670290393450308272}
-  - component: {fileID: 3670290393450308275}
   - component: {fileID: 3670290393450308271}
   - component: {fileID: 3670290393450308270}
   - component: {fileID: 3670290393450308268}
+  - component: {fileID: 2126354121}
   m_Layer: 6
   m_Name: Porquinho
   m_TagString: Inimigos
@@ -88,26 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &3670290393450308275
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3670290393450308274}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f969b80a2f75fc34e857d2aa09dd3e1d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!50 &3670290393450308271
 Rigidbody2D:
   serializedVersion: 4
@@ -174,3 +154,23 @@ MonoBehaviour:
   timerVirando: 2
   timerParado: 1
   parado: 0
+--- !u!95 &2126354121
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3670290393450308274}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f969b80a2f75fc34e857d2aa09dd3e1d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

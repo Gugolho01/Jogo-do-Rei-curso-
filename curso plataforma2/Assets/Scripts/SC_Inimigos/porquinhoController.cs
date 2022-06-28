@@ -103,16 +103,16 @@ public class porquinhoController : MonoBehaviour
                 if (IsGround(0) || !IsGround(4))
                 {
                     timerVirando = 0;
-                    //parado = true;
+                    parado = true;
                 }
             }
             // Esquerda
-            if (velH < 0)
+            else if (velH < 0)
             {
                 if (IsGround(2) || !IsGround(5))
                 {
                     timerVirando = 0;
-                    //parado = true;
+                    parado = true;
                 }
             }
 
@@ -137,11 +137,11 @@ public class porquinhoController : MonoBehaviour
             //Checando se estou me movendo e mudando a animação
             meuAnim.SetBool("parado", true);
 
-            if(timerParado <= 0)timerParado -= Time.deltaTime;
+            if(timerParado >= 0)timerParado -= Time.deltaTime;
             else 
             {
                 timerParado = 1f;
-                //parado = false;
+                parado = false;
             }
             
             
