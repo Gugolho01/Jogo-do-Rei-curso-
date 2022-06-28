@@ -913,6 +913,7 @@ PrefabInstance:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       value: -4.24
       objectReference: {fileID: 0}
     - target: {fileID: 3670290393450308273, guid: c85a9fce1e965434bacba1c74e2b5680, type: 3}
@@ -939,6 +940,13 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 3.19
 >>>>>>> parent of 627c8cd (Fechando o dia)
+=======
+      value: -15.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 3670290393450308273, guid: c85a9fce1e965434bacba1c74e2b5680, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.81
+>>>>>>> parent of abaafd5 (terminei a animação do porquinho)
       objectReference: {fileID: 0}
     - target: {fileID: 3670290393450308273, guid: c85a9fce1e965434bacba1c74e2b5680, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1109,6 +1117,7 @@ PrefabInstance:
     m_Modifications:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     - target: {fileID: 575463663, guid: 8f3754f3de8e3c74399a3200b6f86b9b, type: 3}
 <<<<<<< HEAD
       propertyPath: velV
@@ -1122,6 +1131,12 @@ PrefabInstance:
 >>>>>>> parent of 627c8cd (Fechando o dia)
 =======
 >>>>>>> parent of 627c8cd (Fechando o dia)
+=======
+    - target: {fileID: 575463663, guid: 8f3754f3de8e3c74399a3200b6f86b9b, type: 3}
+      propertyPath: layerLevel.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+>>>>>>> parent of abaafd5 (terminei a animação do porquinho)
     - target: {fileID: 5671343483684838505, guid: 8f3754f3de8e3c74399a3200b6f86b9b, type: 3}
       propertyPath: m_Name
       value: Player

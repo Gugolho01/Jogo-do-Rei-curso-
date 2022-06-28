@@ -6,7 +6,6 @@ public class porquinhoController : MonoBehaviour
 {
     private Rigidbody2D meuRB;
     private BoxCollider2D boxCol;
-    private Animator meuAnim;
     [SerializeField] private LayerMask layerLevel;  //pegando a layer do level
     [SerializeField] private float velH = 2f;
     private float velHMax = 2f;
@@ -22,9 +21,6 @@ public class porquinhoController : MonoBehaviour
 
         //pegando meu boxCollider
         boxCol = GetComponent<BoxCollider2D>();
-
-        //Pegando a animaÁ„o que est· usando
-        meuAnim = GetComponent<Animator>();
 
         //Aplicando velocidade e movendo ele
         meuRB.velocity = new Vector2(velH, meuRB.velocity.y);
@@ -93,9 +89,12 @@ public class porquinhoController : MonoBehaviour
     {
         if (!parado)
         {
+<<<<<<< HEAD
             //Checando se estou me movendo e mudando a animaÁ„o
             
 
+=======
+>>>>>>> parent of abaafd5 (terminei a anima√ß√£o do porquinho)
             velH = velHMax;
             meuRB.velocity = new Vector2(velH, meuRB.velocity.y);
 
@@ -137,6 +136,10 @@ public class porquinhoController : MonoBehaviour
             }
         }
         else {
+<<<<<<< HEAD
+=======
+            //Tirando a velocidade
+>>>>>>> parent of abaafd5 (terminei a anima√ß√£o do porquinho)
             velH = 0;
             meuRB.velocity = new Vector2(velH, meuRB.velocity.y);
 
@@ -147,6 +150,9 @@ public class porquinhoController : MonoBehaviour
                 parado = false;
             }
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of abaafd5 (terminei a anima√ß√£o do porquinho)
     }
 }
