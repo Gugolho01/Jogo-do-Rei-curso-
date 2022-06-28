@@ -6,6 +6,8 @@ public class porquinhoController : MonoBehaviour
 {
     private Rigidbody2D meuRB;
     private BoxCollider2D boxCol;
+    //Boxcolider do colisor de ataque
+    [SerializeField] private BoxCollider2D filhoCol;
     private Animator meuAnim;
     [SerializeField] private LayerMask layerLevel;  //pegando a layer do level
     private float velH = 2f;
@@ -13,6 +15,7 @@ public class porquinhoController : MonoBehaviour
     private float timerVirando = 2;
     private float timerParado = 1;
     private bool parado = false;
+    private bool morto = false;
 
     // Start is called before the first frame update
     void Start()
@@ -34,8 +37,8 @@ public class porquinhoController : MonoBehaviour
     void Update()
     {
         //aqui contem um timer para fazer o porquinho virar a direção
-        Virando();
-
+        //Só posso me mover se estou vivo
+        if (!morto) { Virando(); }
     }
 
     //IsGrounded verifica se ele está tocando em algo em alguma direção
@@ -146,5 +149,19 @@ public class porquinhoController : MonoBehaviour
             
             
         }
+    }
+
+    public void Morrendo()
+    {
+        morto = true;
+
+        //Tirando minha velocidade
+        meuRB.velocity = Vector2.zero;
+
+        //Me destruindo depois de um tempo
+        Destroy(gameObject, 2f);
+
+        //Desabilitando o colisor de dano
+        filhoCol.enabled = false;
     }
 }

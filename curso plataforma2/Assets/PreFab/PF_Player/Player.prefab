@@ -168,8 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velH: 5
-  velV: 7
-  qtdPulo: 1
+  velV: 5
   vida: 3
   invencivel: 1
   layerLevel:

@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private int qtdPulo = 1;
     [SerializeField] private int vida = 3;
     [SerializeField] private float invencivel;
-    private float timerInven = 5f;
+    private float timerInven = 2f;
 
     private Rigidbody2D meuRB;                              //Pegando meu RighdBody
     private Animator meuAnim;
@@ -55,10 +55,14 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Inimigos"))
         {
             //Fazendo ele dar uma quicada aou pular em cima do inimigo
-            if(collision.transform.position.y < transform.position.y)
+            if(collision.transform.position.y + .2f < transform.position.y)
             {
+                //Ganhando impulso
                 meuRB.velocity = new Vector2(meuRB.velocity.x, velV / 2);
-                meuAnim.SetFloat("Velv", meuRB.velocity.y);
+
+                //Pegando o animator do colisor e ativar o triger
+                collision.GetComponentInParent<Animator>().SetTrigger("dano");
+
             //Fazendo ele perder vida ao colidir com o inimigo
             } else
             {
