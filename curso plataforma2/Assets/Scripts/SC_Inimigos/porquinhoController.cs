@@ -136,6 +136,7 @@ public class porquinhoController : MonoBehaviour
                 timerVirando = Random.Range(2f, 7f);
             }
         }
+<<<<<<< HEAD
         //Se ele está parado a velocidade dele vai pra zero
         else
         {
@@ -150,6 +151,17 @@ public class porquinhoController : MonoBehaviour
                 //resetando o timer e deixando ele andar
                 timerParado = 3f;
                 parado = false;
+=======
+        else {
+            velH = 0;
+            meuRB.velocity = new Vector2(velH, meuRB.velocity.y);
+
+            if(timerParado >= 0) { timerParado -= Time.deltaTime; }
+            else 
+            {
+                timerParado = 1f;
+                parado = false; 
+>>>>>>> parent of c78dceb (Finalizei pra deixar charmoso)
             }
         }
 
