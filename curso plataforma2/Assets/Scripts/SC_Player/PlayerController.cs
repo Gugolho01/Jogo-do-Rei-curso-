@@ -35,20 +35,10 @@ public class PlayerController : MonoBehaviour
         Movendo();
 
         Pulando();
-
-        //Se eu toquei no chão eu reseto os pulos
-        if (IsGround(3))
-        {
-            qtdPulo = 1;
-        }
-        else
-        {
-            qtdPulo = 0;
-        }
     }
     private void FixedUpdate()
     {
-        meuAnim.SetBool("noChao", IsGround(3) );
+        //meuAnim.SetBool("noChao", IsGround(3) );
     }
 
     private void Movendo()
@@ -85,6 +75,24 @@ public class PlayerController : MonoBehaviour
 
             //modificando a sprite
             //meuAnim.SetBool("noChao", false);
+        }
+
+        //Se eu toquei no chão eu reseto os pulos
+        if (IsGround(3) || IsGround(4) || IsGround(5))
+        {
+            meuAnim.SetBool("noChao", true);
+            qtdPulo = 1;
+        }
+        else
+        {
+            meuAnim.SetBool("noChao", false);
+            qtdPulo = 0;
+        }
+
+        if (meuRB.velocity.y <= -6 || meuRB.velocity.y == 0)
+        {
+            meuAnim.SetBool("noChao", true);
+            qtdPulo = 1;
         }
     }
 

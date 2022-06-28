@@ -34,8 +34,14 @@ public class porquinhoController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(velHMax);
+        Debug.Log(velH);
+
         //aqui contem um timer para fazer o porquinho virar a direção
         Virando();
+
+        //Checando se estou me movendo e mudando a animação
+        meuAnim.SetBool("parado", parado);
     }
 
     //IsGrounded verifica se ele está tocando em algo em alguma direção
@@ -88,7 +94,7 @@ public class porquinhoController : MonoBehaviour
         if (!parado)
         {
             //Checando se estou me movendo e mudando a animação
-            meuAnim.SetBool("parado", false);
+            
 
             velH = velHMax;
             meuRB.velocity = new Vector2(velH, meuRB.velocity.y);
@@ -121,33 +127,31 @@ public class porquinhoController : MonoBehaviour
             {
                 //invertendo a velH
                 velH *= -1;
-                velHMax = velH;
 
+                if(velH > 0) { velHMax = velH; }
                 
                 //invertendo a imagem
                 meuRB.transform.localScale = new Vector3(Mathf.Sign(velH) * -1, 1f, 1f);
 
-                timerVirando = Random.Range(2f, 6f);
+                timerVirando = Random.Range(2f, 7f);
             }
         }
         //Se ele está parado a velocidade dele vai pra zero
-        else {
-            //Checando se estou me movendo e mudando a animação
-            meuAnim.SetBool("parado", true);
-
+        else
+        {
             //Tirando a velocidade
             velH = 0;
             meuRB.velocity = new Vector2(velH, meuRB.velocity.y);
 
             //Timer para ficar parado por um tempo
-            if(timerParado >= 0) { timerParado -= Time.deltaTime; }
-            else 
+            if (timerParado >= 0) { timerParado -= Time.deltaTime; }
+            else
             {
                 //resetando o timer e deixando ele andar
-                timerParado = 1f;
-                parado = false; 
+                timerParado = 3f;
+                parado = false;
             }
         }
-        
+
     }
 }
