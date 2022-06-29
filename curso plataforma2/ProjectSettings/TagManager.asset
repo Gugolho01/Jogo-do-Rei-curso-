@@ -8,6 +8,7 @@ TagManager:
   - Parede
   - Tiles
   - Inimigos
+  - Porta
   layers:
   - Default
   - TransparentFX

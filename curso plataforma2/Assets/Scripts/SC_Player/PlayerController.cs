@@ -8,15 +8,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float velV = 5;                //Força do pulo
     private int qtdPulo = 1;
     [SerializeField] private int vida = 3;
-    [SerializeField] private float invencivel;
+    private float invencivel;
     private float timerInven = 2f;
 
     private Rigidbody2D meuRB;                              //Pegando meu RighdBody
     private Animator meuAnim;
-
+    private bool morto = false;
     //Elementos do Raycast
     private BoxCollider2D boxCol;
     [SerializeField] private LayerMask layerLevel;
+    [SerializeField] private PortaController minhaPorta;
 
     // Start is called before the first frame update
     void Start()
@@ -34,14 +35,18 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Fazendo o player andar para os lados
-        Movendo();
+        //Impedindo que se mova morto
+        if (!morto) 
+        {
+            //Fazendo o player andar para os lados
+            Movendo();
+            AbrindoPorta();
+            Pulando();
 
-        Pulando();
-
-        if(invencivel >= 0) { invencivel -= Time.deltaTime; }
-        
+            if (invencivel >= 0) { invencivel -= Time.deltaTime; }
+        }
     }
+    
     //Tá funcionando, é isso que importa
     private void FixedUpdate()
     {
@@ -49,8 +54,31 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public void Morto()
+    {
+        morto = true;
+        meuRB.velocity = Vector2.zero;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        //Checando se sai da porta
+        if (collision.gameObject.CompareTag("Porta"))
+        {
+            //Falando que não tenho porta, sai de perto dela
+            minhaPorta = null;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //Estou perto da porta
+        if (collision.gameObject.CompareTag("Porta"))
+        {
+            //pegando o script da porta
+            minhaPorta = collision.GetComponent<PortaController>();
+        }
+
         //Colisão com o inimigo
         if (collision.gameObject.CompareTag("Inimigos"))
         {
@@ -66,9 +94,17 @@ public class PlayerController : MonoBehaviour
             //Fazendo ele perder vida ao colidir com o inimigo
             } else
             {
-                if(invencivel <= 0) 
+                if(invencivel <= 0)
                 {
                     vida--;
+
+                    //animação de dano
+                    meuAnim.SetTrigger("dano");
+
+                    //Informando a quantidade de vida que tenho
+                    meuAnim.SetInteger("vida", vida);
+
+                    //resetando o modo invencivel
                     invencivel = timerInven;
                 }
             }
@@ -164,5 +200,20 @@ public class PlayerController : MonoBehaviour
         //Criando debug para ver as direções com linhas vermelhas
         Debug.DrawRay(boxCol.bounds.center, direcao, Color.red);
         return chao;
+    }
+
+    //metodo para abrir a porta
+    private void AbrindoPorta()
+    {
+        //Só posso abrir a porta se tenho uma porta
+        if(minhaPorta != null)
+        {
+            //Checando se apertei a porta
+            if (Input.GetKeyUp(KeyCode.W))
+            {
+                //Abrindo a porta
+                minhaPorta.Abrindo();
+            }
+        }
     }
 }
