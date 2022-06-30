@@ -18,8 +18,12 @@ public class PortaController : MonoBehaviour
         
     }
 
-    public void Abrindo()
+    public void AbrindoPorta()
     {
         meuAnim.SetTrigger("abrir");
+    }
+    public void FechandoPorta()
+    {
+        meuAnim.SetTrigger("fechar");
     }
 }

@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
         {
             //Fazendo o player andar para os lados
             Movendo();
-            AbrindoPorta();
+            AbrirPorta();
             Pulando();
 
             if (invencivel >= 0) { invencivel -= Time.deltaTime; }
@@ -203,17 +203,33 @@ public class PlayerController : MonoBehaviour
     }
 
     //metodo para abrir a porta
-    private void AbrindoPorta()
+    private void AbrirPorta()
     {
         //Só posso abrir a porta se tenho uma porta
-        if(minhaPorta != null)
+        if(minhaPorta != null && !morto && qtdPulo >= 1)
         {
             //Checando se apertei a porta
             if (Input.GetKeyUp(KeyCode.W))
             {
                 //Abrindo a porta
-                minhaPorta.Abrindo();
+                minhaPorta.AbrindoPorta();
+
+                //indo para a animação entrando na porta
+                meuAnim.SetTrigger("entraPorta");
+
+                //Definindo como morto para ficar parado
+                morto = true;
+                meuRB.velocity = Vector2.zero;
+
+                invencivel = 5f;
+
+                Invoke("FecharPorta", 2f);
             }
         }
+    }
+    private void FecharPorta()
+    {
+        //Abrindo a porta
+        minhaPorta.FechandoPorta();
     }
 }
