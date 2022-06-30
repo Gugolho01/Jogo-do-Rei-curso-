@@ -6,6 +6,8 @@ public class PortaController : MonoBehaviour
 {
     private Animator meuAnim;
 
+    [SerializeField] private string destino;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,5 +27,12 @@ public class PortaController : MonoBehaviour
     public void FechandoPorta()
     {
         meuAnim.SetTrigger("fechar");
+    }
+
+    //Indo para o meu destino
+    public void IndoDestino()
+    {
+        //Acessando o GameManager
+        FindObjectOfType<GameManager>().MudaCena(destino);
     }
 }

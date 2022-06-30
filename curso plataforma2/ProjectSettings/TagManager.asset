@@ -9,6 +9,7 @@ TagManager:
   - Tiles
   - Inimigos
   - Porta
+  - GameManeger
   layers:
   - Default
   - TransparentFX

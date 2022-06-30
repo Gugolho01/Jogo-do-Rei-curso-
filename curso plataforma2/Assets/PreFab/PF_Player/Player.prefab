@@ -170,7 +170,7 @@ MonoBehaviour:
   velH: 5
   velV: 5
   vida: 3
-  invencivel: 1
   layerLevel:
     serializedVersion: 2
     m_Bits: 256
+  minhaPorta: {fileID: 0}
