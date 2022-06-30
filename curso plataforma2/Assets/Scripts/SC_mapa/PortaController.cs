@@ -6,7 +6,7 @@ public class PortaController : MonoBehaviour
 {
     private Animator meuAnim;
 
-    [SerializeField] private string destino;
+    [SerializeField] private string destino = null;
 
     // Start is called before the first frame update
     void Start()
@@ -34,5 +34,10 @@ public class PortaController : MonoBehaviour
     {
         //Acessando o GameManager
         FindObjectOfType<GameManager>().MudaCena(destino);
+    }
+
+    public bool TenhoDestino() 
+    {
+        return destino != null;
     }
 }

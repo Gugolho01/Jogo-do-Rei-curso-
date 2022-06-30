@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SC-jogo.unity
+    path: Assets/Scenes/SC jogo.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/SC jogo 2.unity
+    guid: ebde8ff0bcc098c4b8aba17de200f954
+  - enabled: 1
+    path: Assets/Scenes/SC jogo 3.unity
+    guid: bcbd93d72e9089a409c1e9b96b5bb382
   m_configObjects: {}

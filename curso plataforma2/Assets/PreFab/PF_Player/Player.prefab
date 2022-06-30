@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velH: 5
-  velV: 5
+  velV: 7
   vida: 3
   layerLevel:
     serializedVersion: 2

@@ -56,8 +56,15 @@ public class PlayerController : MonoBehaviour
 
     public void Morto()
     {
-        morto = true;
-        meuRB.velocity = Vector2.zero;
+        if(morto == false) 
+        {
+            morto = true;
+            meuRB.velocity = Vector2.zero;
+        } else
+        {
+            morto = false;
+        }
+        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -208,28 +215,37 @@ public class PlayerController : MonoBehaviour
         //Só posso abrir a porta se tenho uma porta
         if(minhaPorta != null && !morto && qtdPulo >= 1)
         {
-            //Checando se apertei a porta
-            if (Input.GetKeyUp(KeyCode.W))
-            {
-                //Abrindo a porta
-                minhaPorta.AbrindoPorta();
+            if (minhaPorta.TenhoDestino())
+            { 
+                //Checando se apertei a porta
+                if (Input.GetKeyUp(KeyCode.W))
+                {
+                    //Abrindo a porta
+                    minhaPorta.AbrindoPorta();
 
-                //indo para a animação entrando na porta
-                meuAnim.SetTrigger("entraPorta");
+                    //indo para a animação entrando na porta
+                    meuAnim.SetTrigger("entraPorta");
+                    Invoke("OutraCena", 2f);
+                    //Definindo como morto para ficar parado
+                    morto = true;
+                    meuRB.velocity = Vector2.zero;
 
-                //Definindo como morto para ficar parado
-                morto = true;
-                meuRB.velocity = Vector2.zero;
-
-                invencivel = 5f;
-
-                Invoke("FecharPorta", 2f);
+                    invencivel = 5f;
+                }
             }
         }
     }
+    //Vai pra outra cena
+    private void OutraCena()
+    {
+        if (minhaPorta != null) { minhaPorta.IndoDestino();  }
+    }
+
     private void FecharPorta()
     {
         //Abrindo a porta
         minhaPorta.FechandoPorta();
+
+        morto = false;
     }
 }

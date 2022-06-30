@@ -20,6 +20,6 @@ public class GameManager : MonoBehaviour
     //Criando um método para ir para outra cena
     public void MudaCena(string destino)
     {
-        SceneManager.LoadScene(destino);
+        SceneManager.LoadScene(destino); 
     }
 }
