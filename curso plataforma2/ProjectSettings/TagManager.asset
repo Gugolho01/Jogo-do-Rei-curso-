@@ -62,3 +62,6 @@ TagManager:
   - name: Player
     uniqueID: 4097318513
     locked: 0
+  - name: iluminacao
+    uniqueID: 494997995
+    locked: 0
