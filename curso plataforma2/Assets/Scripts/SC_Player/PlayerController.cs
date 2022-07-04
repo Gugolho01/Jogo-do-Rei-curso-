@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private BoxCollider2D boxCol;
     [SerializeField] private LayerMask layerLevel;
     [SerializeField] private PortaController minhaPorta;
+    private GameManager meuGM;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,10 @@ public class PlayerController : MonoBehaviour
 
         //pegando o meu boxcollider
         boxCol = GetComponent<BoxCollider2D>();
+
+        //Pegando a minha Vida no GameManager
+        meuGM = FindObjectOfType<GameManager>();
+        vida = meuGM.GetVida();
     }
 
     // Update is called once per frame
@@ -56,7 +61,7 @@ public class PlayerController : MonoBehaviour
 
     public void Morto()
     {
-        if(morto == false) 
+        if (morto == false)
         {
             morto = true;
             meuRB.velocity = Vector2.zero;
@@ -104,6 +109,11 @@ public class PlayerController : MonoBehaviour
                 if(invencivel <= 0)
                 {
                     vida--;
+                    //Informando ao meu GameManager que a vida mudou
+                    meuGM.SetVida(vida);
+
+                    //Informando ao game manager para ajustar a vida
+                    meuGM.AjustandoVida();
 
                     //animação de dano
                     meuAnim.SetTrigger("dano");
@@ -225,7 +235,7 @@ public class PlayerController : MonoBehaviour
 
                     //indo para a animação entrando na porta
                     meuAnim.SetTrigger("entraPorta");
-                    Invoke("OutraCena", 2f);
+                    
                     //Definindo como morto para ficar parado
                     morto = true;
                     meuRB.velocity = Vector2.zero;
@@ -235,17 +245,16 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    //Vai pra outra cena
-    private void OutraCena()
-    {
-        if (minhaPorta != null) { minhaPorta.IndoDestino();  }
-    }
-
-    private void FecharPorta()
+    
+    private void SaindoCena()
     {
         //Abrindo a porta
-        minhaPorta.FechandoPorta();
+        minhaPorta.IndoDestino();
+        
+    }
 
-        morto = false;
+    public void Riniciando()
+    {
+        meuGM.GameOver();
     }
 }

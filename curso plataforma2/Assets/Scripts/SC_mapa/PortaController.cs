@@ -12,12 +12,23 @@ public class PortaController : MonoBehaviour
     void Start()
     {
         meuAnim = GetComponent<Animator>();
+
+        EntraCena();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void EntraCena()
+    {
+        if (destino == "")
+        {
+            AbrindoPorta();
+            Invoke("FechandoPorta", 2f);
+        }
     }
 
     public void AbrindoPorta()
@@ -38,6 +49,6 @@ public class PortaController : MonoBehaviour
 
     public bool TenhoDestino() 
     {
-        return destino != null;
+        return destino != "";
     }
 }
