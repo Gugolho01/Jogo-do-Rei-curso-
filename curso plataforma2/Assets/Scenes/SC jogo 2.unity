@@ -130,9 +130,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 230534956, guid: 7434b17f42df7174c9ac5c3707ac15b1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 6582928616850800962, guid: 7434b17f42df7174c9ac5c3707ac15b1, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6582928616850800962, guid: 7434b17f42df7174c9ac5c3707ac15b1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -198,7 +202,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7890243334150919660, guid: 7a428be911ec7b546a0d9d2fe4ca747d, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7890243334150919660, guid: 7a428be911ec7b546a0d9d2fe4ca747d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -259,7 +263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6740160448418886286, guid: 84228443938987a488bcde2088cec541, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6740160448418886286, guid: 84228443938987a488bcde2088cec541, type: 3}
       propertyPath: m_LocalPosition.x
@@ -376,7 +380,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &923240857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,7 +394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ComponentVersion: 1
-  m_LightType: 4
+  m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -441,10 +445,10 @@ MonoBehaviour:
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 360
+  m_PointLightInnerAngle: 185.97
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 1
+  m_PointLightInnerRadius: 0.98
+  m_PointLightOuterRadius: 3.1
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -479,7 +483,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3670290393450308273, guid: c85a9fce1e965434bacba1c74e2b5680, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3670290393450308273, guid: c85a9fce1e965434bacba1c74e2b5680, type: 3}
       propertyPath: m_LocalPosition.x
@@ -540,7 +544,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5184885628506886623, guid: 15ef997dbfabe9e40ba4fff0e5aebfea, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5184885628506886623, guid: 15ef997dbfabe9e40ba4fff0e5aebfea, type: 3}
       propertyPath: m_LocalPosition.x
@@ -613,7 +617,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5671343483684838508, guid: 8f3754f3de8e3c74399a3200b6f86b9b, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5671343483684838508, guid: 8f3754f3de8e3c74399a3200b6f86b9b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -679,7 +683,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4544094448519832358, guid: ca0a48ef3f0cdc44c9b5cb74abb6f0d6, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4544094448519832358, guid: ca0a48ef3f0cdc44c9b5cb74abb6f0d6, type: 3}
       propertyPath: m_LocalPosition.x
